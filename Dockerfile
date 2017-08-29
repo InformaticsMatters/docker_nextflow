@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER Tim Dudgeon
 
 
-RUN yum -y install docker-client.x86_64 java-1.8.0-openjdk-headless.x86_64 &&\
+RUN yum -y install docker-client java-1.8.0-openjdk-headless &&\
  yum clean all 
  
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
