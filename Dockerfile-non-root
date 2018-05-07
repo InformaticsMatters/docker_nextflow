@@ -10,6 +10,15 @@ RUN yum update -y &&\
  
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
 
+RUN useradd -u 567 -g 0 -m nextflow &&\
+ groupadd docker &&\
+ usermod -aG docker nextflow
+
+USER 567
+WORKDIR /home/nextflow
+
 RUN curl -fsSL get.nextflow.io | bash && chmod 755 nextflow
-RUN mv nextflow /usr/local/bin
+USER root
+RUN mv /home/nextflow/nextflow /usr/local/bin
+USER 567
 
