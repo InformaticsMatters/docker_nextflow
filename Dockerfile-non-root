@@ -12,7 +12,7 @@ RUN yum update -y &&\
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
 
 RUN useradd -u 567 -g 0 -m nextflow &&\
- groupadd docker &&\
+ groupadd docker && \
  usermod -aG docker nextflow
 
 USER 567

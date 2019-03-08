@@ -11,7 +11,7 @@ RUN yum update -y &&\
  
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
 
-WORKDIR /
+WORKDIR /root
 COPY nextflow-config .nextflow/config
 RUN curl https://github.com/nextflow-io/nextflow/releases/download/v${NF_VERSION}/nextflow -o nextflow -L && \
     chmod 755 nextflow && \
