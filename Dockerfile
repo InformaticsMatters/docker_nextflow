@@ -1,5 +1,6 @@
 FROM centos:7
 LABEL maintainer="Tim Dudgeon<tdudgeon@informaticsmatters.com>"
+ARG NF_VERSION=19.01.0
 
 RUN yum update -y &&\
  yum install -y --setopt=tsflags=nodocs --setopt=override_install_langs=en_US.utf8\
@@ -10,6 +11,8 @@ RUN yum update -y &&\
  
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
 
-RUN curl -fsSL get.nextflow.io | bash && chmod 755 nextflow
-RUN mv nextflow /usr/local/bin
-
+WORKDIR /
+COPY nextflow-config .nextflow/config
+RUN curl https://github.com/nextflow-io/nextflow/releases/download/v${NF_VERSION}/nextflow -o nextflow -L && \
+    chmod 755 nextflow && \
+    mv nextflow /usr/local/bin
