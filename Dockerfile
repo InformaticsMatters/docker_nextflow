@@ -16,5 +16,5 @@ COPY nextflow-config .nextflow/config
 RUN curl https://github.com/nextflow-io/nextflow/releases/download/v${NF_VERSION}/nextflow -o nextflow -L && \
     chmod 755 nextflow && \
     mv nextflow /usr/local/bin
-# Run a nextflwo command to force it to pull down dependent code...
+# Run a nextflow command to force it to pull down dependent code...
 RUN /usr/local/bin/nextflow -version
