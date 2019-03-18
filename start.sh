@@ -17,4 +17,5 @@ echo 'Nextflow completed'
 
 echo "Moving results..."
 mv results/* .
+rm -rf results
 echo "Results moved"
