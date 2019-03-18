@@ -10,11 +10,19 @@ RUN yum update -y &&\
  rm -rf /var/cache/yum 
  
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
+ENV HOME /root
 
-WORKDIR /root
+WORKDIR ${HOME}
 COPY nextflow-config .nextflow/config
+COPY docker-entrypoint.sh ./
+COPY start.sh ./
+
 RUN curl https://github.com/nextflow-io/nextflow/releases/download/v${NF_VERSION}/nextflow -o nextflow -L && \
     chmod 755 nextflow && \
+    chmod 755 *.sh && \
     mv nextflow /usr/local/bin
+
 # Run a nextflow command to force it to pull down dependent code...
 RUN /usr/local/bin/nextflow -version
+
+ENTRYPOINT ["/root/docker-entrypoint.sh"]
