@@ -1,1 +1,14 @@
-process.executor = 'k8s'
+profiles {
+
+  standard {
+    docker.enabled = true
+    docker.mountFlags = 'z'
+    docker.runOptions = '-u $(id -u):$(id -g)'
+    process.container = 'centos:7'
+  }
+
+  kubernetes {
+    process.executor = 'k8s'
+  }
+
+}
