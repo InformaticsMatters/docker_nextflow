@@ -1,8 +1,11 @@
 # Nextflow Dockerfile
 Dockerfile for a Centos based container that contains Nextflow and Java.
 
-    $ docker build -t informaticsmatters/nextflow:19.01.0 .
-
+    $ NF_VERSION=19.01.0 \
+        docker build --build-arg NF_VERSION=$NF_VERSION \
+        -t informaticsmatters/nextflow:$NF_VERSION .
+    $ NF_VERSION=19.01.0 docker push informaticsmatters/nextflow:$NF_VERSION
+    
 ## Runtime configuration
 The container image behaviour is configured with a number of
 environment variables: -
