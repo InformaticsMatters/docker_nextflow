@@ -1,8 +1,13 @@
-# Nextflow Dockerfile
-Dockerfile for a Centos based container that contains Nextflow and Java.
+# Nextflow
+A container image for a Centos based container that contains [Nextflow]
+and Java.
 
-    $ docker build -t informaticsmatters/nextflow:19.01.0 .
-    $ docker push informaticsmatters/nextflow:19.01.0
+You can use Docker's build-args to build the image for a specific nextflow
+release: -
+
+    $ V=19.10.0
+    $ docker build --build-arg NF_VERSION=$V -t informaticsmatters/nextflow:$V .
+    $ docker push informaticsmatters/nextflow:$V
     
 ## Runtime configuration
 The container image behaviour is configured with a number of
@@ -24,3 +29,7 @@ environment variables: -
                         injected into the work-directory of the container
                         (there isn't one by default).
                         The script is run if it is found to exist.
+
+---
+
+[nextflow]: https://www.nextflow.io
