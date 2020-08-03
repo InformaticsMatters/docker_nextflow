@@ -1,11 +1,10 @@
 # Nextflow
-A container image for a Centos based container that contains [Nextflow]
-and Java.
+A Squonk-compliant [Nextflow] container image.
 
 You can use Docker's build-args to build the image for a specific nextflow
 release: -
 
-    $ V=19.10.0
+    $ V=20.07.1
     $ docker build --build-arg NF_VERSION=$V -t informaticsmatters/nextflow:$V .
     $ docker push informaticsmatters/nextflow:$V
     
